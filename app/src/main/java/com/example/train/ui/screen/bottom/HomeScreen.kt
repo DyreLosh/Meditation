@@ -3,15 +3,17 @@ package com.example.train.ui.screen.bottom
 import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.CenterEnd
 import androidx.compose.ui.Alignment.Companion.CenterStart
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -29,6 +31,7 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Background)
+            .verticalScroll(rememberScrollState())
     ) {
         Image(
             painter = painterResource(id = R.drawable.background_welcome),
@@ -71,12 +74,50 @@ fun HomeScreen() {
             Spacer(modifier = Modifier.height(20.dp))
             CourseCard()
             Spacer(modifier = Modifier.height(20.dp))
-            Card {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_group_6859),
-                    contentDescription = "",
-                    modifier = Modifier.fillMaxWidth().padding(20.dp),
-                    contentScale = ContentScale.FillWidth
+            DailyThought()
+        }
+    }
+}
+
+@Composable
+fun DailyThought() {
+    Card(modifier = Modifier.padding(horizontal = 20.dp)) {
+        Box(modifier = Modifier.fillMaxWidth()) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_group_6859),
+                contentDescription = "",
+                modifier = Modifier.fillMaxWidth(),
+                contentScale = ContentScale.FillWidth
+            )
+            Button(
+                onClick = { /*TODO*/ },
+                shape = CircleShape,
+                modifier = Modifier
+                    .align(CenterEnd)
+                    .padding(end = 20.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White
+                )
+            ) {
+                Icon(painter = painterResource(id = R.drawable.ic_start), contentDescription = "", tint = TextColor)
+            }
+            Column(
+                modifier = Modifier
+                    .padding(start = 15.dp)
+                    .align(CenterStart)
+            ) {
+                Text(
+                    text = "Daily Thought",
+                    color = Color.White,
+                    fontFamily = helveticaBold,
+                    fontSize = 25.sp,
+                )
+                Spacer(modifier = Modifier.height(5.dp))
+                Text(
+                    text = "MEDITATION * 3-10 мин",
+                    color = Color.White,
+                    fontFamily = helveticaMedium,
+                    fontSize = 14.sp
                 )
             }
         }

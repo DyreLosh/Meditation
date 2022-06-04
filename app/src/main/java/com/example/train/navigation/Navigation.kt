@@ -10,7 +10,7 @@ import com.example.train.ui.screen.*
 fun Navigation() {
     val startController = rememberNavController()
 
-    NavHost(navController = startController, startDestination = Screen.WelcomeScreen.route) {
+    NavHost(navController = startController, startDestination = Screen.MusicOpenScreen.route) {
 
         composable(Screen.WelcomeScreen.route) { WelcomeScreen(startController)}
         composable(Screen.SignInScreen.route) { SignInScreen(startController)}
@@ -18,6 +18,7 @@ fun Navigation() {
         composable(Screen.WelcomeTwoScreen.route) { WelcomeScreenTwo(startController)}
         composable(Screen.MainScreen.route) { MainScreen(startController)}
         composable(Screen.ChooseTopicScreen.route) { ChooseTopicScreen(startController)}
+        composable(Screen.MusicOpenScreen.route) { MusicPlayerScreen(startController) }
 
     }
 }
